@@ -6,6 +6,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Icon from "react-native-vector-icons/Feather";
 
+import Notification from './src/components/Notification'
+
 //-------------Abas---------------
 
 //Home
@@ -34,11 +36,16 @@ function scheduleScreen() {
 function notificationsScreen() {
   //Estado das notificações
   const [notification, setNotification] = useState([
-    { key: 1, text: "Teste 1" },
-    { key: 2, text: "Teste 2" },
-    { key: 3, text: "Teste 3" },
-    { key: 4, text: "Teste 4" },
-    { key: 5, text: "Teste 5" },
+    { key: 1, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 2, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 3, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 4, timeText: "Há 50 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 5, timeText: "Há 50 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 6, timeText: "Há 50 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 7, timeText: "Há uma hora", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 8, timeText: "Há uma hora", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 9, timeText: "Há uma hora", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
+    { key: 10, timeText: "Há duas horas", notificationText: "Follow the white rabbit" },
   ]);
 
   return (
@@ -50,7 +57,7 @@ function notificationsScreen() {
         showsHorizontalScrollIndicator={false}
         data={notification}
         keyExtractor={(item) => String(item.key)}
-        renderItem={() => <Text>Teste</Text>}
+        renderItem={({item}) => <Notification data={item} />}
       />
     </SafeAreaView>
   );
@@ -122,12 +129,14 @@ const styles = StyleSheet.create({
   },
   notificationsScreenHeader: {
     flex: 1,
-    paddingTop: 45,
+    backgroundColor: '#FFF',
+    paddingTop: 60,
+    paddingBottom: 50,
+    paddingLeft: 16,
     alignItems: "flex-start",
+    justifyContent: 'center',
   },
   notificationsScreenHeaderTitle: {
     fontSize: 24,
-    paddingBottom: 10,
-    paddingLeft: 16,
   },
 });
