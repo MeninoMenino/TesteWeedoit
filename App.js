@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View, FlatList } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View, FlatList, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -34,7 +34,8 @@ function scheduleScreen() {
 
 //Notificações
 function notificationsScreen() {
-  //Estado das notificações
+
+  //Notificações (mock)
   const [notification, setNotification] = useState([
     { key: 1, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
     { key: 2, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
@@ -67,8 +68,13 @@ function notificationsScreen() {
 function settingsScreen() {
   return (
     <SafeAreaView style={styles.tabContainer}>
-      <View>
-        <Text>Configurações</Text>
+      <View style={styles.settingsHeader}>
+        <Image
+        source={require('./src/img/meninoimg.jpg')}
+        style={styles.settingsImage}
+        />
+        <Text style={styles.settingsUsernameText}>Gabriel Menino</Text>
+        <Text style={styles.settingsEmailText}>grmenino@weedoit.com</Text>
       </View>
     </SafeAreaView>
   );
@@ -139,4 +145,21 @@ const styles = StyleSheet.create({
   notificationsScreenHeaderTitle: {
     fontSize: 24,
   },
+  settingsHeader:{
+    flex: 1,
+    paddingVertical: 50,
+    alignItems: 'center',
+    backgroundColor: '#FFF'
+  },
+  settingsImage: {
+    borderRadius: 50,
+    width: 100,
+    height: 100
+  },
+  settingsUsernameText: {
+    fontSize: 24,
+  },
+  settingsEmailText: {
+    fontSize: 14,
+  }
 });
