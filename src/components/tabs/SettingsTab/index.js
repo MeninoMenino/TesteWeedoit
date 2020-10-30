@@ -1,5 +1,13 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 export default function () {
   return (
@@ -12,9 +20,67 @@ export default function () {
         <Text style={styles.settingsUsernameText}>Gabriel Menino</Text>
         <Text style={styles.settingsEmailText}>grmenino@weedoit.com</Text>
       </View>
+      
       <View>
-        <Text>MEUS DADOS</Text>
+        <Text style={styles.meusDadosText}>MEUS DADOS</Text>
       </View>
+
+      <View style={styles.optionsView}>
+        <View style={styles.optionTextView}>
+          <Text>Alterar meus dados</Text>
+        </View>
+        <View style={styles.arrowIconView}>
+          <AntDesign
+            name="right"
+            size={24}
+            color="#FF8000"
+            style={styles.arrowIcon}
+          />
+        </View>
+      </View>
+
+      <View style={styles.optionsView}>
+        <View style={styles.optionTextView}>
+          <Text>Meus planos</Text>
+        </View>
+        <View style={styles.arrowIconView}>
+          <AntDesign
+            name="right"
+            size={24}
+            color="#FF8000"
+            style={styles.arrowIcon}
+          />
+        </View>
+      </View>
+
+      <View style={styles.optionsView}>
+        <View style={styles.optionTextView}>
+          <Text>Alterar minha senha</Text>
+        </View>
+        <View style={styles.arrowIconView}>
+          <AntDesign
+            name="right"
+            size={24}
+            color="#FF8000"
+            style={styles.arrowIcon}
+          />
+        </View>
+      </View>
+
+      <View style={styles.optionsView}>
+        <View style={styles.optionTextView}>
+          <Text>Dependentes</Text>
+        </View>
+        <View style={styles.arrowIconView}>
+          <AntDesign
+            name="right"
+            size={24}
+            color="#FF8000"
+            style={styles.arrowIcon}
+          />
+        </View>
+      </View>
+
       <TouchableOpacity style={styles.logoutButton}>
         <Text style={styles.logoutButtonText}>SAIR</Text>
       </TouchableOpacity>
@@ -28,7 +94,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   settingsHeader: {
-    flex: 1,
     paddingVertical: 50,
     alignItems: "center",
     backgroundColor: "#FFF",
@@ -53,5 +118,30 @@ const styles = StyleSheet.create({
   logoutButtonText: {
     color: "#FF8000",
     fontSize: 15,
+  },
+  meusDadosText: {
+    marginVertical: 12,
+    paddingLeft: 12,
+  },
+  optionsView: {
+    flex: 1,
+    flexDirection: "row",
+    paddingVertical: 3,
+    marginVertical: 2,
+    fontSize: 16,
+    backgroundColor: "#FFF",
+    justifyContent: "center",
+  },
+  optionTextView: {
+    flex: 1,
+    paddingLeft: 15,
+    justifyContent: "center",
+    alignItems: "flex-start",
+  },
+  arrowIconView: {
+    flex: 1,
+    paddingRight: 15,
+    justifyContent: "center",
+    alignItems: "flex-end",
   },
 });
