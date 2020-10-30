@@ -6,12 +6,22 @@ import {
   View,
   Image,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
 export default function () {
   return (
     <SafeAreaView style={styles.tabContainer}>
+      <TouchableOpacity
+        style={styles.logoutButton}
+        onPress={() => {
+          console.log("Logout");
+        }}
+      >
+        <Text style={styles.logoutButtonText}>SAIR</Text>
+      </TouchableOpacity>
+
       <View style={styles.settingsHeader}>
         <Image
           source={require("../../../img/meninoimg.jpg")}
@@ -20,12 +30,17 @@ export default function () {
         <Text style={styles.settingsUsernameText}>Gabriel Menino</Text>
         <Text style={styles.settingsEmailText}>grmenino@weedoit.com</Text>
       </View>
-      
+
       <View>
         <Text style={styles.meusDadosText}>MEUS DADOS</Text>
       </View>
 
-      <View style={styles.optionsView}>
+      <Pressable
+        onPress={() => {
+          console.log("Pressed");
+        }}
+        style={styles.pressableOption}
+      >
         <View style={styles.optionTextView}>
           <Text>Alterar meus dados</Text>
         </View>
@@ -37,9 +52,14 @@ export default function () {
             style={styles.arrowIcon}
           />
         </View>
-      </View>
+      </Pressable>
 
-      <View style={styles.optionsView}>
+      <Pressable
+        onPress={() => {
+          console.log("Pressed");
+        }}
+        style={styles.pressableOption}
+      >
         <View style={styles.optionTextView}>
           <Text>Meus planos</Text>
         </View>
@@ -51,9 +71,14 @@ export default function () {
             style={styles.arrowIcon}
           />
         </View>
-      </View>
+      </Pressable>
 
-      <View style={styles.optionsView}>
+      <Pressable
+        onPress={() => {
+          console.log("Pressed");
+        }}
+        style={styles.pressableOption}
+      >
         <View style={styles.optionTextView}>
           <Text>Alterar minha senha</Text>
         </View>
@@ -65,9 +90,14 @@ export default function () {
             style={styles.arrowIcon}
           />
         </View>
-      </View>
+      </Pressable>
 
-      <View style={styles.optionsView}>
+      <Pressable
+        onPress={() => {
+          console.log("Pressed");
+        }}
+        style={styles.pressableOption}
+      >
         <View style={styles.optionTextView}>
           <Text>Dependentes</Text>
         </View>
@@ -79,11 +109,7 @@ export default function () {
             style={styles.arrowIcon}
           />
         </View>
-      </View>
-
-      <TouchableOpacity style={styles.logoutButton}>
-        <Text style={styles.logoutButtonText}>SAIR</Text>
-      </TouchableOpacity>
+      </Pressable>
     </SafeAreaView>
   );
 }
@@ -123,7 +149,7 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     paddingLeft: 12,
   },
-  optionsView: {
+  pressableOption: {
     flex: 1,
     flexDirection: "row",
     paddingVertical: 3,
