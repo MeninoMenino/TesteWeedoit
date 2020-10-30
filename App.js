@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View, FlatList, Image } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View, FlatList, Image, TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -76,6 +76,12 @@ function settingsScreen() {
         <Text style={styles.settingsUsernameText}>Gabriel Menino</Text>
         <Text style={styles.settingsEmailText}>grmenino@weedoit.com</Text>
       </View>
+      <View>
+        <Text>MEUS DADOS</Text>
+      </View>
+      <TouchableOpacity style={styles.logoutButton}>
+        <Text style={styles.logoutButtonText}>SAIR</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -161,5 +167,15 @@ const styles = StyleSheet.create({
   },
   settingsEmailText: {
     fontSize: 14,
-  }
+    color: '#b3b3b3',
+  },
+  logoutButton: {
+    position: 'absolute',
+    right: 25,
+    top: 25,
+  },
+  logoutButtonText: {
+    color: '#FF8000',
+    fontSize: 15,
+  },
 });
