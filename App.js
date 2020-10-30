@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View} from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Icon from "react-native-vector-icons/Feather";
 
 //Telas das abas
-import NotificationTab from './src/components/tabs/NotificationTab'
-import SettingsTab from './src/components/tabs/SettingsTab'
+import NotificationTab from "./src/components/tabs/NotificationTab";
+import SettingsTab from "./src/components/tabs/SettingsTab";
 
 //-------------Abas---------------
 
 //Home
-function homeScreen() {
+function homeTab() {
   return (
     <SafeAreaView style={styles.tabContainer}>
       <View>
@@ -23,7 +23,7 @@ function homeScreen() {
 }
 
 //Consultas
-function scheduleScreen() {
+function scheduleTab() {
   return (
     <SafeAreaView style={styles.tabContainer}>
       <View>
@@ -34,32 +34,67 @@ function scheduleScreen() {
 }
 
 //Notificações
-function notificationsScreen() {
-
+function notificationsTab() {
   //Lista de notificações (mock)
   const [notification, setNotification] = useState([
-    { key: 1, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 2, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 3, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 4, timeText: "Há 50 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 5, timeText: "Há 50 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 6, timeText: "Há 50 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 7, timeText: "Há uma hora", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 8, timeText: "Há uma hora", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 9, timeText: "Há uma hora", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
-    { key: 10, timeText: "Há duas horas", notificationText: "Follow the white rabbit" },
+    {
+      key: 1,
+      timeText: "Há 43 minutos",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 2,
+      timeText: "Há 43 minutos",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 3,
+      timeText: "Há 43 minutos",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 4,
+      timeText: "Há 50 minutos",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 5,
+      timeText: "Há 50 minutos",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 6,
+      timeText: "Há 50 minutos",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 7,
+      timeText: "Há uma hora",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 8,
+      timeText: "Há uma hora",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 9,
+      timeText: "Há uma hora",
+      notificationText: "Olá, sua consulta foi remarcada com sucesso",
+    },
+    {
+      key: 10,
+      timeText: "Há duas horas",
+      notificationText: "Follow the white rabbit",
+    },
   ]);
 
-  return (
-    <NotificationTab data={notification}/>
-  );
+  return <NotificationTab data={notification} />;
 }
 
 //Configurações
-function settingsScreen() {
-  return (
-    <SettingsTab/>
-  );
+function settingsTab() {
+  return <SettingsTab />;
 }
 
 const Tab = createBottomTabNavigator();
@@ -100,10 +135,10 @@ export default function App() {
           showLabel: false,
         }}
       >
-        <Tab.Screen name="Home" component={homeScreen} />
-        <Tab.Screen name="Schedule" component={scheduleScreen} />
-        <Tab.Screen name="Notifications" component={notificationsScreen} />
-        <Tab.Screen name="Settings" component={settingsScreen} />
+        <Tab.Screen name="Home" component={homeTab} />
+        <Tab.Screen name="Schedule" component={scheduleTab} />
+        <Tab.Screen name="Notifications" component={notificationsTab} />
+        <Tab.Screen name="Settings" component={settingsTab} />
       </Tab.Navigator>
     </NavigationContainer>
   );
@@ -112,5 +147,8 @@ export default function App() {
 //----Stylesheet----
 
 const styles = StyleSheet.create({
-
+  tabContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
 });
