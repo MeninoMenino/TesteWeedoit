@@ -1,12 +1,13 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { SafeAreaView, StyleSheet, Text, View, FlatList, Image, TouchableOpacity } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import Icon from "react-native-vector-icons/Feather";
 
-import Notification from './src/components/Notification'
+//Telas das abas
+import NotificationTab from './src/components/tabs/NotificationTab'
+import SettingsTab from './src/components/tabs/SettingsTab'
 
 //-------------Abas---------------
 
@@ -35,7 +36,7 @@ function scheduleScreen() {
 //Notificações
 function notificationsScreen() {
 
-  //Notificações (mock)
+  //Lista de notificações (mock)
   const [notification, setNotification] = useState([
     { key: 1, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
     { key: 2, timeText: "Há 43 minutos", notificationText: "Olá, sua consulta foi remarcada com sucesso" },
@@ -50,39 +51,14 @@ function notificationsScreen() {
   ]);
 
   return (
-    <SafeAreaView style={styles.tabContainer}>
-      <View style={styles.notificationsScreenHeader}>
-        <Text style={styles.notificationsScreenHeaderTitle}>Notificações</Text>
-      </View>
-      <FlatList
-        showsHorizontalScrollIndicator={false}
-        data={notification}
-        keyExtractor={(item) => String(item.key)}
-        renderItem={({item}) => <Notification data={item} />}
-      />
-    </SafeAreaView>
+    <NotificationTab data={notification}/>
   );
 }
 
 //Configurações
 function settingsScreen() {
   return (
-    <SafeAreaView style={styles.tabContainer}>
-      <View style={styles.settingsHeader}>
-        <Image
-        source={require('./src/img/meninoimg.jpg')}
-        style={styles.settingsImage}
-        />
-        <Text style={styles.settingsUsernameText}>Gabriel Menino</Text>
-        <Text style={styles.settingsEmailText}>grmenino@weedoit.com</Text>
-      </View>
-      <View>
-        <Text>MEUS DADOS</Text>
-      </View>
-      <TouchableOpacity style={styles.logoutButton}>
-        <Text style={styles.logoutButtonText}>SAIR</Text>
-      </TouchableOpacity>
-    </SafeAreaView>
+    <SettingsTab/>
   );
 }
 
@@ -92,10 +68,11 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
+    //Navegador (tab bar)
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          //Seta o ícone da TabBar
+          //Seta o ícone da Tab Bar
           tabBarIcon: ({ color, size }) => {
             let iconName;
 
@@ -135,47 +112,5 @@ export default function App() {
 //----Stylesheet----
 
 const styles = StyleSheet.create({
-  tabContainer: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  notificationsScreenHeader: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    paddingTop: 60,
-    paddingBottom: 50,
-    paddingLeft: 16,
-    alignItems: "flex-start",
-    justifyContent: 'center',
-  },
-  notificationsScreenHeaderTitle: {
-    fontSize: 24,
-  },
-  settingsHeader:{
-    flex: 1,
-    paddingVertical: 50,
-    alignItems: 'center',
-    backgroundColor: '#FFF'
-  },
-  settingsImage: {
-    borderRadius: 50,
-    width: 100,
-    height: 100
-  },
-  settingsUsernameText: {
-    fontSize: 24,
-  },
-  settingsEmailText: {
-    fontSize: 14,
-    color: '#b3b3b3',
-  },
-  logoutButton: {
-    position: 'absolute',
-    right: 25,
-    top: 25,
-  },
-  logoutButtonText: {
-    color: '#FF8000',
-    fontSize: 15,
-  },
+
 });
